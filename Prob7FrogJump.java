@@ -1,4 +1,4 @@
-class FrogJump {
+class Prob7FrogJump {
     public boolean canCross(int[] stones) {
         Map<Integer, Map<Integer, Boolean>> DP = new HashMap<>();
         for (int stone : stones) {
