@@ -1,4 +1,4 @@
-class HouseRob2 {
+class Prob6HouseRob2 {
     public int rob(int[] nums) {
 
         if(nums.length==1)
