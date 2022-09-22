@@ -1,0 +1,44 @@
+class Prob9ArraySubsetSum {
+    public boolean canPartition(int[] nums) {
+        int totalsum=0;
+       for(int num : nums)
+           totalsum += num;
+           
+            if(totalsum%2!=0)
+            return false;
+            
+            return checkSubset(0,totalsum/2,nums,new HashMap<String,Boolean>());
+        
+    }
+            private boolean checkSubset(int currentIndex,int targetSum,int [] nums,HashMap<String,Boolean> memo){
+
+                if(targetSum==0)return true;
+                
+                if(currentIndex >= nums.length)
+                    return false;
+                
+                int currentNum=nums[currentIndex];
+                
+                String memoKey=Integer.toString(currentIndex)+"_"+Integer.toString(targetSum);
+                
+                if(memo.containsKey(memoKey))
+                    return memo.get(memoKey);
+                
+                boolean consider=false;
+                
+                if(nums[currentIndex] <= targetSum)
+                    consider=checkSubset(currentIndex+1,targetSum-nums[currentIndex],nums,memo);
+                
+                if(consider){
+
+                    memo.put(memoKey,true);
+                    return true;
+                }
+                
+                boolean notConsider=checkSubset(currentIndex+1,targetSum,nums,memo);
+                
+                memo.put(memoKey,(consider || notConsider));
+                
+                return memo.get(memoKey);
+            }
+}
