@@ -26,7 +26,7 @@ class Prob11CountSubsetWithDifference {
         return memo.get(memoKey);
         
         int sum1=countSubset(currentIndex+1,targetSum-nums[currentIndex],nums,memo);
-        int sum2=countSubset(currentIndex,targetSum,nums,memo);
+        int sum2=countSubset(currentIndex+1,targetSum,nums,memo);
         
         memo.put(memoKey,(sum1+sum2));
         
