@@ -1,0 +1,36 @@
+class Prob11CountSubsetWithDifference {
+  
+  public int subsetSum(int[] nums,int difference) {
+        int totalsum=0;
+       for(int num : nums)
+           totalsum += num;
+           
+         int targetSum = totalsum - difference;
+            if(targetSum%2!=0)
+            return 0;
+            
+            return countSubset(0,targetSum/2,nums,new HashMap<String,Boolean>());
+        
+    }
+   private int countSubset(int currentIndex,int targetSum,int [] nums , HashMap<String , Integer> memo){
+
+        if(targetSum == 0)
+        return 1;
+        
+        if(currentIndex >= nums.length)
+        return 0;
+        
+        String memoKey = currentIndex+"-"+targetSum;
+        
+        if(memo.containsKey(memoKey))
+        return memo.get(memoKey);
+        
+        int sum1=countSubset(currentIndex+1,targetSum-nums[currentIndex],nums,memo);
+        int sum2=countSubset(currentIndex,targetSum,nums,memo);
+        
+        memo.put(memoKey,(sum1+sum2));
+        
+        return memo.get(memoKey);
+  
+  }
+}
