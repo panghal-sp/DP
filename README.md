@@ -1,4 +1,4 @@
 # DP
 
-This Repository Contains a sequence of Prolems solved according to their difficulty .
+This Repository Contains a sequence of Dynamic Programming Prolems solved according to their difficulty .
 These questions are asked in major Product Based Companies .
